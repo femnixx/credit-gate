@@ -12,7 +12,7 @@ const form = useForm({
     <div class="signup-container">
         <h1>Join the cat club!</h1>
 
-        <form @submit.prevent="form.post('/register')">
+        <form @submit.prevent="form.post('/sign-up')">
             <label for="">Your name:</label>
             <input type="text" v-model="form.name" class="border p-2">
             <label for="">Your email:</label>
@@ -20,7 +20,7 @@ const form = useForm({
             <label for="">Your password:</label>
             <input type="text" v-model="form.password" class="border p-2">
             
-            <p>Preview: Your name is: {{ form.name}}</p>
+            <p>Preview: Your name is: {{ form.name }}</p>
         </form>
     </div>
 </template>

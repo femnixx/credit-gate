@@ -30,7 +30,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        Auth::login($user);
+        Auth::sign($user);
 
         return redirect('/cats');
     }
