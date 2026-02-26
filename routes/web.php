@@ -13,3 +13,6 @@ Route::post('/sign-up', [RegisterController::class, 'store']);
 
 Route::get('/sign-in', [LoginController::class, 'create']);
 
+Route::get('/homepage', function () { 
+    return Inertia::render('Homepage');
+});
