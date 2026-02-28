@@ -5,6 +5,12 @@
         email: '',
         password: ''
     });
+
+    const submit = () => { 
+        form.post('/sign-in', { 
+            onSuccess: () => console.log("Logged in!"),
+        });
+    }
 </script>
 
 <template>
@@ -13,12 +19,12 @@
 
     <form action="" @submit.prevent="form.post('/sign-in')">
         <label for="">Your email:</label>
-        <input type="text" v-model="form.email" class="border p-2">
+        <input type="text" placeholder="email@gmail.com" v-model="form.email" class="border p-2">
         <div v-if="form.errors.email">{{  form.errors.email }}</div>
         <label for="">Your password:</label>
-        <input type="text" v-model="form.password" class="border p-2">
+        <input type="password" placeholder="password" v-model="form.password" class="border p-2">
         
-        <p>Your email is: {{ form.email }}</p>
+        <button type="submit" :disabled="form.processing" class="p-2 ml-2">{{ form.processing ? 'Signing In...' : 'Login'}}</button>
     </form>
 
     </div>
