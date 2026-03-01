@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\SignInController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\Auth\SignOutController;
 
 Route::get('/sign-up', function () { 
     return Inertia::render('SignUp');
@@ -25,3 +26,5 @@ Route::post('/sign-in', [SignInController::class, 'signIn']);
 
 Route::post('/homepage/deduct', [HomeController::class, 'deduct']);
 Route::post('/homepage/increment', [HomeController::class, 'increment']);
+
+Route::post('/sign-out', [SignOutController::class, 'signOut']);

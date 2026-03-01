@@ -23,6 +23,12 @@
     const addCredits = () => { 
         router.post('/homepage/increment');
     }
+
+    const logOut = () => {
+        router.post('/sign-out')
+        window.location.reload();
+    }
+    
 </script>
 
 <template>
@@ -37,6 +43,7 @@
                 <p>Insufficient funds!</p>
             </div>
             <button v-on:click="addCredits">Click here to add credits!</button>
+            <button v-on:click="logOut">Sign Out</button>
         </div>
 
         <div v-else>
