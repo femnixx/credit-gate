@@ -1,5 +1,6 @@
 <script setup>
     import { computed } from 'vue';
+    import { router } from '@inertiajs/vue3';
 
     const props = defineProps({
         user: Object,
@@ -9,8 +10,16 @@
     const isLoggedIn = computed(() => props.user !== null);
 
     const firstName = computed(() => { 
-        return isLoggedIn.value ? props.user.name.split(' ')[0] : 'Guest';
+        return isLoggedIn.value ? props.user.name.split(' ')[0] : "Guest";
     });
+
+    const userCredits = computed(() => { 
+        return isLoggedIn.value ? props.user.credits : null;
+    });
+
+    const subtractCredits = () => { 
+        router.post('/homepage/deduct');
+    }
 </script>
 
 <template>
@@ -18,7 +27,12 @@
         <h1>Welcome to Credit Gate, {{ firstName }}</h1>
 
         <div v-if="isLoggedIn">
-            <p>Logged in as: <strong>{{  user.email }}</strong></p>
+            <p>Logged in as: <strong>{{ props.user.email }}</strong></p>
+            <p>Credits: {{ userCredits }}</p>
+            <button v-on:click="subtractCredits">Make task (deducts 10 credits)</button>
+            <div v-if="userCredits < 10" class="text-red-500">
+                <p>Insufficient funds!</p>
+            </div>
         </div>
 
         <div v-else>

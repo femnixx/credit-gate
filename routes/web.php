@@ -22,3 +22,5 @@ Route::get('/homepage', [HomeController::class, 'index']);
 Route::get('/', [WelcomeController::class, 'index']);
 
 Route::post('/sign-in', [SignInController::class, 'signIn']);
+
+Route::post('/homepage/deduct', [HomeController::class, 'deduct']);
