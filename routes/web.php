@@ -11,7 +11,7 @@ Route::get('/sign-up', function () {
     return Inertia::render('SignUp');
 });
 
-Route::post('/sign-up', [RegisterController::class, 'store'])->name('sign.up');
+Route::post('/sign-up', [RegisterController::class, 'store']);
 
 Route::get('/sign-in', function () {
     return Inertia::render('SignIn');
@@ -21,4 +21,4 @@ Route::get('/homepage', [HomeController::class, 'index']);
 
 Route::get('/', [WelcomeController::class, 'index']);
 
-Route::post('/sign-in', [LoginController::class, 'store'])->name('sign.in');
+Route::post('/sign-in', [LoginController::class, 'store']);

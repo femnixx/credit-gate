@@ -13,15 +13,15 @@ class RegisterController extends Controller
 {
     public function create()
     {
-        return Inertia::render('Signup');
+        return Inertia::render('SignUp');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'username' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string}min:8|confirmed',
+            'password' => 'required|string|min:8',
         ]);
 
         $user = User::create([
@@ -29,8 +29,6 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-
-        Auth::sign($user);
 
         return redirect('/sign-in')->with('message', 'Sign up successful!');
     }
