@@ -32,6 +32,6 @@ class RegisterController extends Controller
 
         Auth::sign($user);
 
-        return redirect('/cats');
+        return redirect('/sign-in')->with('message', 'Sign up successful!');
     }
 }
