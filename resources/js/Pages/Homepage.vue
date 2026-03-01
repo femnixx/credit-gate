@@ -20,6 +20,9 @@
     const subtractCredits = () => { 
         router.post('/homepage/deduct');
     }
+    const addCredits = () => { 
+        router.post('/homepage/increment');
+    }
 </script>
 
 <template>
@@ -33,6 +36,7 @@
             <div v-if="userCredits < 10" class="text-red-500">
                 <p>Insufficient funds!</p>
             </div>
+            <button v-on:click="addCredits">Click here to add credits!</button>
         </div>
 
         <div v-else>

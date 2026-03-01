@@ -26,4 +26,13 @@ class HomeController extends Controller
         }
         return back();
     }
+
+    public function increment(Request $request)
+    {
+        $user = $request->user();
+
+        $user->increment('credits',10);
+        
+        return back();
+    }
 }

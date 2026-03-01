@@ -24,3 +24,4 @@ Route::get('/', [WelcomeController::class, 'index']);
 Route::post('/sign-in', [SignInController::class, 'signIn']);
 
 Route::post('/homepage/deduct', [HomeController::class, 'deduct']);
+Route::post('/homepage/increment', [HomeController::class, 'increment']);
