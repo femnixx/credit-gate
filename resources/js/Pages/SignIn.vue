@@ -18,7 +18,7 @@
     <div class="login-container">
         <h1>Login to your account</h1>
 
-    <form action="" @submit.prevent="form.post('/sign-in')">
+    <form action="" @submit.prevent="submit">
         <label for="">Your email:</label>
         <input type="text" placeholder="email@gmail.com" v-model="form.email" class="border p-2">
         <div v-if="form.errors.email">{{  form.errors.email }}</div>
