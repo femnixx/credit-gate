@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -21,9 +22,11 @@ class HomeController extends Controller
     {
         $user = $request->user();
 
-        if ($user->credits >= 10 ) { 
-            $user->decrement('credits', 10);
+        if ($request->user()->credits < 10) {
+            return response()->json(['error' => 'Insufficient funds'], 402);
         }
+        
+        $request->user()->decrement('credits', 10);
         return back();
     }
 
