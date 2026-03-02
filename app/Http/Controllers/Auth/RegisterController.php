@@ -6,11 +6,19 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\RegisterRequest;
 use App\Services\AuthService;
+use Inertia\Inertia;
 
 class RegisterController extends Controller
 {
+
+    public function store() { 
+        return Inertia::render("");
+    }
+
     public function store(RegisterRequest $request, AuthService $authService)
     {
         $authService->register($request->validated());
+
+        return redirect('/sign-in')->with('message', 'Registration successful! Please log in.');
     }
 }
