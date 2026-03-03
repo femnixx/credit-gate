@@ -6,6 +6,7 @@ use App\Models\Task;
 use Illuminate\Http\Request;
 use App\Http\Requests\TaskRequest;
 use App\Services\TaskService;
+use Inertia\Inertia;
 
 class TaskController extends Controller
 {
@@ -14,7 +15,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render("Tasks");
     }
 
     /**

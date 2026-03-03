@@ -28,6 +28,8 @@
         router.post('/sign-out')
         window.location.reload();
     }
+
+    
     
 </script>
 
@@ -42,6 +44,7 @@
             <div v-if="userCredits < 10" class="text-red-500">
                 <p>Insufficient funds!</p>
             </div>
+            <button><a href="/create-tasks">Create Task</a></button>
             <button v-on:click="addCredits">Click here to add credits!</button>
             <button v-on:click="logOut">Sign Out</button>
         </div>
