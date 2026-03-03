@@ -6,8 +6,6 @@ use App\Models\User;
 use App\Models\Task;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\DB;      
-use Symfony\Component\HttpKernel\Exception\HttpException;
-
 class TaskService
 {
 public function createTask(array $data, User $user) 
@@ -21,7 +19,7 @@ public function createTask(array $data, User $user)
         $user->decrement('credits',10);
 
         return $user->tasks()->create([
-            'title' => $data['title'],
+            'task_name' => $data['task_name'],
             'description' => $data['description']
         ]);
     });

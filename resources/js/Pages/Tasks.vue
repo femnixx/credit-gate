@@ -25,9 +25,9 @@ const submit = () => {
 
     <form @submit.prevent="submit">
         <label for="">Task Name</label>
-        <input type="text" placeholder="Buy cat food">
+        <input v-model="form.task_name" type="text" placeholder="Buy cat food">
         <label for="">Task description (optional)</label>
-        <input type="text" placeholder="Description...">
+        <input v-model="form.description" type="text" placeholder="Description...">
         <button class="" v-on:submit="submit">Submit</button>
         <div v-if="form.processing">
             Deducting credits...
@@ -36,7 +36,9 @@ const submit = () => {
             Successfull!
         </div>
         <div v-else-if="form.hasErrors">
-            Failed to deduct credits or create task.
+            <ul v-for="(error, index) in form.errors" :key="index">
+                <li>{{ error }}</li>
+            </ul>
         </div>
 
     </form>

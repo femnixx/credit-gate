@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\TaskRequest;
 use App\Services\TaskService;
 use Inertia\Inertia;
+use App\Http\Resources\TaskResource;
 
 class TaskController extends Controller
 {
@@ -15,8 +16,13 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return Inertia::render("Tasks");
+        $tasks = Task::all();
+
+        return Inertia::render("Tasks", [
+            'tasks' => TaskResource::collection($tasks)
+        ]);
     }
+
 
     /**
      * Store a newly created resource in storage.
