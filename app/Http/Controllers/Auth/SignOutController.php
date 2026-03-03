@@ -8,10 +8,9 @@ use Illuminate\Http\Request;
 
 class SignOutController extends Controller
 {
-    public function signOut(Request $request) 
+    public function destroy(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 

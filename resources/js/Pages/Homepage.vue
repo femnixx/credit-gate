@@ -26,8 +26,7 @@
     }
 
     const logOut = () => {
-        router.post('/sign-out')
-        window.location.reload();
+        router.post('/sign-out');
     }
 </script>
 

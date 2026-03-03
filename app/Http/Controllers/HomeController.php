@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function index() 
     {
        $tasks = auth()->user()->tasks;
-       
+
         return Inertia::render('Homepage', [
             'user' => Auth::user(),
             'serverTime' => now()->toTimeString(),
@@ -43,4 +43,5 @@ class HomeController extends Controller
         
         return back();
     }
+
 }

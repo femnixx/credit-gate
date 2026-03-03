@@ -26,7 +26,7 @@ Route::post('/sign-in', [SignInController::class, 'login']);
 Route::post('/homepage/deduct', [HomeController::class, 'deduct']);
 Route::post('/homepage/increment', [HomeController::class, 'increment']);
 
-Route::post('/sign-out', [SignOutController::class, 'signOut']);
+Route::post('/sign-out', [SignOutController::class, 'destroy']);
 
 Route::middleware([ 'auth' ])->group(function () {
     Route::get('/create-tasks', [TaskController::class, 'index']);
