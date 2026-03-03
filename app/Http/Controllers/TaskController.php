@@ -16,11 +16,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
-
-        return Inertia::render("Tasks", [
-            'tasks' => TaskResource::collection($tasks)
-        ]);
+        return Inertia::render("Tasks");
     }
 
 
@@ -29,17 +25,14 @@ class TaskController extends Controller
      */
     public function store(TaskRequest $request,TaskService $taskService)
     {
-        $taskService->createTask($request->validated(), auth()->user());
-        return redirect()->back()->with('message', 'Task successfully created');
-    }
+        $data = $request->validate([
+            'task_name' => 'required|string|max:255',
+            'description' => 'string|nullable'
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Task $task)
-    {
-        //
-    }
+        $taskService->createTask($data, $request->user());
 
+        return redirect()->back();
+    }
 
 }

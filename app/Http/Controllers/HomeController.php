@@ -7,14 +7,19 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use App\Models\Task;
+use App\Http\Resources\TaskResource;
 
 class HomeController extends Controller
 {
     public function index() 
     {
+       $tasks = auth()->user()->tasks;
+       
         return Inertia::render('Homepage', [
             'user' => Auth::user(),
             'serverTime' => now()->toTimeString(),
+            'tasks' => TaskResource::collection($tasks)
         ]);
     }
 

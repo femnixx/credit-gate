@@ -33,3 +33,4 @@ Route::middleware([ 'auth' ])->group(function () {
 
     Route::post('/create-tasks/post',[TaskController::class, 'store']);
 });
+

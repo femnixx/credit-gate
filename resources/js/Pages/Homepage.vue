@@ -4,6 +4,7 @@
 
     const props = defineProps({
         user: Object,
+        tasks: Object,
         serverTime: String
     });
 
@@ -28,9 +29,6 @@
         router.post('/sign-out')
         window.location.reload();
     }
-
-    
-    
 </script>
 
 <template>
@@ -55,6 +53,14 @@
                 <a href="/sign-in">Sign In</a>
                 <a href="/sign-up">Sign Up</a>
             </div>
+        </div>
+
+        <div v-if="tasks.data.length > 0">
+            <div v-for="tasks in tasks.data" :key="tasks.id">{{ tasks.task_name }}</div>
+        </div>
+
+        <div v-else>
+            <p>No tasks that are able to be viewed</p>
         </div>
     </div>
 </template>

@@ -18,10 +18,7 @@ public function createTask(array $data, User $user)
         }
         $user->decrement('credits',10);
 
-        return $user->tasks()->create([
-            'task_name' => $data['task_name'],
-            'description' => $data['description']
-        ]);
+        return $user->tasks()->create($data);
     });
    }
 

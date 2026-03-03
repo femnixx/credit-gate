@@ -7,15 +7,8 @@ const form = useForm({
     description: ''
 });
 
-const showToast = false;
-
 const submit = () => { 
     form.post('/create-tasks/post', {
-        onSuccess: () => { 
-            showToast.valueOf = true;
-            setTimeout(() => showToast.valueOf = false, 3000)
-        },
-        onFinish: () => form.reset('task_name', 'description')
     });
 }
 </script>
@@ -33,7 +26,7 @@ const submit = () => {
             Deducting credits...
         </div>
         <div v-else-if="form.recentlySuccessful">
-            Successfull!
+            Successfull! Task posted: {{ form.task_name }}
         </div>
         <div v-else-if="form.hasErrors">
             <ul v-for="(error, index) in form.errors" :key="index">
