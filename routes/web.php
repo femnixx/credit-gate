@@ -14,15 +14,13 @@ Route::get('/sign-up', function () {
 
 Route::post('/sign-up', [RegisterController::class, 'store']);
 
-Route::get('/sign-in', function () {
-    return Inertia::render('SignIn');
-});
+Route::get('/sign-in', [SignInController::class, 'index']);
 
 Route::get('/homepage', [HomeController::class, 'index']);
 
 Route::get('/', [WelcomeController::class, 'index']);
 
-Route::post('/sign-in', [SignInController::class, 'signIn']);
+Route::post('/sign-in', [SignInController::class, 'login']);
 
 Route::post('/homepage/deduct', [HomeController::class, 'deduct']);
 Route::post('/homepage/increment', [HomeController::class, 'increment']);

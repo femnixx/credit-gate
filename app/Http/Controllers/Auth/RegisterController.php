@@ -11,8 +11,8 @@ use Inertia\Inertia;
 class RegisterController extends Controller
 {
 
-    public function store() { 
-        return Inertia::render("");
+    public function index() { 
+        return Inertia::render("SignUp");
     }
 
     public function store(RegisterRequest $request, AuthService $authService)

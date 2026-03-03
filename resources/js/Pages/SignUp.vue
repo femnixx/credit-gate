@@ -12,7 +12,7 @@ const form = useForm({
 const showToast = ref(false);
 
 
-const submit = () => { 
+const submit = () => {   
     form.post('/sign-up', { 
         onSuccess: () => {  
             showToast.value = true;
