@@ -32,5 +32,7 @@ Route::middleware([ 'auth' ])->group(function () {
     Route::get('/create-tasks', [TaskController::class, 'index']);
 
     Route::post('/create-tasks/post',[TaskController::class, 'store']);
+
+    Route::put('/tasks/{task}', [TaskController::class, 'update']);
 });
 

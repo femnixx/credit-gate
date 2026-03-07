@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class TaskService
 {
 public function createTask(array $data, User $user) 
-{
+{ 
     return DB::transaction(function () use ($user, $data) {
         if ($user->credits < 10) { 
             throw ValidationException::withMessages([
@@ -21,14 +21,15 @@ public function createTask(array $data, User $user)
         return $user->tasks()->create($data);
     });
    }
-    public function updateTask(Task $task, User $user) 
+    public function update(array $data, Task $task)
     {
-    return DB::table('tasks')
-    ->where('id', $task->id)
-    ->where('user_id', $user->id)
-    ->update([
-        'task_name' => $task->task_name
-    ]);
+        return DB::transaction(function () use ($task, $data) 
+        {
+            $task->update([
+                'task_name' => $data['task_name'],
+                'description' => $data['description'],
+            ]);
+            return $task;
+    });
     }
-
 }

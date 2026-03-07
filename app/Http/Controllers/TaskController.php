@@ -35,4 +35,11 @@ class TaskController extends Controller
         return redirect()->back();
     }
 
+    public function update(TaskRequest $request, Task $task, TaskService $taskService)
+    {
+        $taskService->update($request->validated(), $task);
+
+        return redirect()->back()->with('success', 'Task updated!');
+    }
+
 }
