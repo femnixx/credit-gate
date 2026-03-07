@@ -35,6 +35,13 @@ class TaskController extends Controller
         return redirect()->back();
     }
 
+    public function edit(Task $task)
+    {
+        return Inertia::render("EditTask", [
+            'task' => $task
+        ]);
+    }
+
     public function update(TaskRequest $request, Task $task, TaskService $taskService)
     {
         $taskService->update($request->validated(), $task);

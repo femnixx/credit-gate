@@ -28,12 +28,12 @@ Route::middleware([ 'auth', 'prevent-back' ])->group(function () {
 
     Route::post('/create-tasks/post',[TaskController::class, 'store']);
 
-    Route::put('/tasks/{task}', [TaskController::class, 'update']);
+    Route::put('/tasks/{task}/update', [TaskController::class, 'update']);
+    Route::get('/tasks/{task}/edit', [TaskController::class, 'edit']);
     Route::post('/homepage/deduct', [HomeController::class, 'deduct']);
     Route::post('/homepage/increment', [HomeController::class, 'increment']);
 
     Route::post('/sign-out', [SignOutController::class, 'destroy']);
     Route::get('/homepage', [HomeController::class, 'index']);
-
 });
 

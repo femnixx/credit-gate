@@ -35,6 +35,9 @@
             }
         });
     }
+    const editTask = (id) => { 
+        router.get(`/tasks/${id}/edit`)
+    };
 </script>
 
 <template>
@@ -61,10 +64,12 @@
             </div>
         </div>
 
-        <div v-if="tasks?.data?.length > 0">
-            <div v-for="tasks in tasks.data" :key="tasks.id">{{ tasks.task_name }}</div>
+        <div v-if="props.tasks.data.length >0">
+            <div v-for="task in props.tasks.data" :key="task.id" class="task-item">
+                <span>TaskID: {{ task.id }} - {{ task.task_name }}</span>
+                <button @click="editTask(task.id)">Edit Task</button>
+            </div>
         </div>
-
         <div v-else>
             <p>No tasks that are able to be viewed</p>
         </div>
