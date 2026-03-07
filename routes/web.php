@@ -35,5 +35,7 @@ Route::middleware([ 'auth', 'prevent-back' ])->group(function () {
 
     Route::post('/sign-out', [SignOutController::class, 'destroy']);
     Route::get('/homepage', [HomeController::class, 'index']);
+
+    Route::delete('tasks/{task}', [TaskController::class, 'delete']);
 });
 

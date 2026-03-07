@@ -38,6 +38,10 @@
     const editTask = (id) => { 
         router.get(`/tasks/${id}/edit`)
     };
+
+    const deleteTask = (id) => {
+        router.delete(`tasks/${id}`)
+    }
 </script>
 
 <template>
@@ -68,6 +72,7 @@
             <div v-for="task in props.tasks.data" :key="task.id" class="task-item">
                 <span>TaskID: {{ task.id }} - {{ task.task_name }}</span>
                 <button @click="editTask(task.id)">Edit Task</button>
+                <button @click="deleteTask(task.id)">Delete Task</button>
             </div>
         </div>
         <div v-else>

@@ -49,4 +49,9 @@ class TaskController extends Controller
         return redirect()->back()->with('success', 'Task updated!');
     }
 
+    public function delete(Task $task, TaskService $taskService)
+    {
+        $taskService->delete($task);
+    }
+
 }

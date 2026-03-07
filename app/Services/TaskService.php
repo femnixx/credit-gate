@@ -32,4 +32,8 @@ public function createTask(array $data, User $user)
             return $task;
     });
     }
+    public function delete(Task $task) { 
+        $task->delete();
+        return redirect()->back()->with('success', 'successfully delete task');
+    }
 }
