@@ -1,21 +1,23 @@
 <script setup>
     import { computed } from 'vue';
-    import { router } from '@inertiajs/vue3';
+    import { router, usePage } from '@inertiajs/vue3';
 
+    const page = usePage();
     const props = defineProps({
         user: Object,
         tasks: Object,
         serverTime: String
     });
 
-    const isLoggedIn = computed(() => props.user !== null);
+    const user = computed(() => page.props.auth.user);
+    const isLoggedIn = computed(() => user.value !== null);
 
     const firstName = computed(() => { 
-        return isLoggedIn.value ? props.user.name.split(' ')[0] : "Guest";
+        return isLoggedIn.value ? user.value.name.split(' ')[0] : "Guest";
     });
 
     const userCredits = computed(() => { 
-        return isLoggedIn.value ? props.user.credits : null;
+        return user.value ? props.user.credits : null;
     });
 
     const subtractCredits = () => { 
@@ -26,7 +28,12 @@
     }
 
     const logOut = () => {
-        router.post('/sign-out');
+        router.post('/sign-out', {}, { 
+            replace: true,
+            onSuccess: () => { 
+                window.location.href = '/sign-in';
+            }
+        });
     }
 </script>
 
@@ -54,7 +61,7 @@
             </div>
         </div>
 
-        <div v-if="tasks.data.length > 0">
+        <div v-if="tasks?.data?.length > 0">
             <div v-for="tasks in tasks.data" :key="tasks.id">{{ tasks.task_name }}</div>
         </div>
 
